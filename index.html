@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>健康科普AI工坊 - 精简版</title>
+    <title>健康科普AI工坊 - 简约版</title>
     <style>
-        /* 精简后的样式代码，移除资源管理相关样式 */
         :root {
-            --primary: #4CAF50;
-            --secondary: #2196F3;
-            --accent: #FF9800;
+            --primary: #000000;
+            --secondary: #333333;
+            --accent: #666666;
             --light: #f8f9fa;
-            --dark: #333;
-            --gray: #6c757d;
-            --danger: #e53935;
-            --border-radius: 8px;
+            --dark: #000000;
+            --gray: #888888;
+            --border-radius: 4px;
         }
         
         * {
@@ -25,7 +23,7 @@
         }
         
         body {
-            background-color: #f0f8ff;
+            background-color: #ffffff;
             color: var(--dark);
             line-height: 1.6;
         }
@@ -37,10 +35,10 @@
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: #ffffff;
+            color: var(--dark);
             padding: 1.5rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e0e0e0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -70,16 +68,17 @@
         }
         
         .nav-links a {
-            color: white;
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
             padding: 5px 10px;
             border-radius: var(--border-radius);
             transition: background 0.3s;
+            border: 1px solid #e0e0e0;
         }
         
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.05);
         }
         
         .workflow-container {
@@ -92,15 +91,9 @@
         .step-card {
             background: white;
             border-radius: var(--border-radius);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
             padding: 25px;
             position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .step-header {
@@ -115,7 +108,7 @@
             align-items: center;
             width: 40px;
             height: 40px;
-            background: var(--primary);
+            background: var(--dark);
             color: white;
             border-radius: 50%;
             font-weight: bold;
@@ -142,8 +135,8 @@
         
         .tool-card {
             background: var(--light);
-            border-left: 4px solid var(--accent);
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
             padding: 15px;
             display: flex;
             flex-direction: column;
@@ -166,7 +159,7 @@
         
         .btn {
             padding: 8px 15px;
-            border: none;
+            border: 1px solid var(--dark);
             border-radius: 4px;
             font-weight: 500;
             cursor: pointer;
@@ -175,30 +168,17 @@
             display: inline-block;
             text-align: center;
             width: fit-content;
+            background: white;
+            color: var(--dark);
         }
         
-        .btn-primary {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #0d8aee;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .btn-outline:hover {
-            background-color: rgba(33, 150, 243, 0.1);
+        .btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
         }
         
         .tips-section {
-            background: #fff8e1;
-            border-left: 4px solid var(--accent);
+            background: #f8f8f8;
+            border-left: 2px solid var(--dark);
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
             padding: 20px;
             margin: 30px 0;
@@ -218,7 +198,7 @@
         
         .tip::before {
             content: "•";
-            color: var(--accent);
+            color: var(--dark);
             font-weight: bold;
             margin-right: 10px;
         }
@@ -237,7 +217,8 @@
         .workflow-step {
             width: 100px;
             height: 100px;
-            background: var(--light);
+            background: white;
+            border: 1px solid #e0e0e0;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -247,7 +228,6 @@
             position: relative;
             z-index: 2;
             margin: 0 15px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
             padding: 15px;
         }
         
@@ -267,7 +247,7 @@
         .step-icon {
             font-size: 2rem;
             margin-bottom: 8px;
-            color: var(--secondary);
+            color: var(--dark);
         }
         
         footer {
@@ -318,7 +298,7 @@
                 <a href="#theme">主题生成</a>
                 <a href="#creation">文案创作</a>
                 <a href="#design">视觉设计</a>
-                <a href="#compliance">合规检查</a>
+                <a href="#publishing">发布准备</a>
             </nav>
         </div>
     </header>
@@ -337,10 +317,6 @@
                 <div class="workflow-step">
                     <div class="step-icon">🎨</div>
                     <div>视觉设计</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-icon">🔍</div>
-                    <div>合规检查</div>
                 </div>
                 <div class="workflow-step">
                     <div class="step-icon">🚀</div>
@@ -362,19 +338,19 @@
                         <div class="tool-card">
                             <div class="tool-name">📊 知乎热榜</div>
                             <div class="tool-description">查看当前最热门的健康话题讨论</div>
-                            <a href="https://www.zhihu.com/hot" target="_blank" class="btn btn-primary">访问知乎热榜</a>
+                            <a href="https://www.zhihu.com/hot" target="_blank" class="btn">访问知乎热榜</a>
                         </div>
                         
                         <div class="tool-card">
-                            <div class="tool-name">🔥 标题生成器</div>
-                            <div class="tool-description">创建引人注目的标题和主题创意</div>
-                            <a href="https://www.logosc.cn/ai-title/" target="_blank" class="btn btn-primary">使用生成器</a>
+                            <div class="tool-name">🔥 百度健康热搜</div>
+                            <div class="tool-description">了解百度平台上的健康热点话题</div>
+                            <a href="https://health.baidu.com" target="_blank" class="btn">访问百度健康</a>
                         </div>
                         
                         <div class="tool-card">
-                            <div class="tool-name">🧠 主题灵感库</div>
-                            <div class="tool-description">健康科普主题分类与创意建议</div>
-                            <button class="btn btn-outline">查看灵感库</button>
+                            <div class="tool-name">📈 微博健康话题</div>
+                            <div class="tool-description">追踪微博上的健康相关热门话题</div>
+                            <a href="https://s.weibo.com/top/summary?cate=health" target="_blank" class="btn">访问微博健康</a>
                         </div>
                     </div>
                 </div>
@@ -392,19 +368,19 @@
                         <div class="tool-card">
                             <div class="tool-name">🧾 DeepSeek AI助手</div>
                             <div class="tool-description">撰写科普文案并生成分镜脚本</div>
-                            <a href="https://www.deepseek.com" target="_blank" class="btn btn-primary">开始AI写作</a>
+                            <a href="https://www.deepseek.com" target="_blank" class="btn">开始AI写作</a>
                         </div>
                         
                         <div class="tool-card">
-                            <div class="tool-name">📊 ChatGPT对话</div>
-                            <div class="tool-description">获取健康内容创作灵感</div>
-                            <a href="https://chat.openai.com" target="_blank" class="btn btn-primary">访问ChatGPT</a>
+                            <div class="tool-name">🤖 豆包AI</div>
+                            <div class="tool-description">字节跳动推出的AI创作助手</div>
+                            <a href="https://www.doubao.com" target="_blank" class="btn">访问豆包AI</a>
                         </div>
                         
                         <div class="tool-card">
-                            <div class="tool-name">📋 脚本转换器</div>
-                            <div class="tool-description">将文章转换为视觉分镜脚本</div>
-                            <a href="https://chatppt.ai" target="_blank" class="btn btn-primary">使用工具</a>
+                            <div class="tool-name">💡 元宝AI</div>
+                            <div class="tool-description">国内领先的AI创作平台</div>
+                            <a href="https://www.yuanbaoai.com" target="_blank" class="btn">访问元宝AI</a>
                         </div>
                     </div>
                 </div>
@@ -420,57 +396,21 @@
                     
                     <div class="tool-list">
                         <div class="tool-card">
-                            <div class="tool-name">🖼️ Midjourney绘图</div>
-                            <div class="tool-description">生成卡通插图和角色设计</div>
-                            <a href="https://www.midjourney.com" target="_blank" class="btn btn-primary">开始创作</a>
-                        </div>
-                        
-                        <div class="tool-card">
-                            <div class="tool-name">🎨 Leonardo AI</div>
-                            <div class="tool-description">创建场景插画和背景元素</div>
-                            <a href="https://leonardo.ai" target="_blank" class="btn btn-primary">访问平台</a>
+                            <div class="tool-name">🎨 豆包AI绘图</div>
+                            <div class="tool-description">使用AI生成健康科普插图</div>
+                            <a href="https://www.doubao.com/ai-drawing" target="_blank" class="btn">开始创作</a>
                         </div>
                         
                         <div class="tool-card">
                             <div class="tool-name">🔗 Vecteezy素材</div>
                             <div class="tool-description">下载免费医疗矢量素材</div>
-                            <a href="https://www.vecteezy.com/medical" target="_blank" class="btn btn-primary">获取素材</a>
+                            <a href="https://www.vecteezy.com/medical" target="_blank" class="btn">获取素材</a>
                         </div>
                         
                         <div class="tool-card">
                             <div class="tool-name">🖋️ Canva设计平台</div>
                             <div class="tool-description">完整图文设计与排版工具</div>
-                            <a href="https://canva.cn" target="_blank" class="btn btn-primary">开始设计</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="compliance" class="step-card">
-                <div class="step-header">
-                    <div class="step-number">4</div>
-                    <h2 class="step-title">合规检查</h2>
-                </div>
-                <div class="step-content">
-                    <p>确保内容符合医疗健康相关规范和政策</p>
-                    
-                    <div class="tool-list">
-                        <div class="tool-card">
-                            <div class="tool-name">⚖️ 腾讯医典审核</div>
-                            <div class="tool-description">医疗内容合规性检查和风险标记</div>
-                            <a href="https://med.ai.tencent.com/" target="_blank" class="btn btn-primary">进行审核</a>
-                        </div>
-                        
-                        <div class="tool-card">
-                            <div class="tool-name">🔎 TinEye版权检测</div>
-                            <div class="tool-description">验证图片版权并避免侵权风险</div>
-                            <a href="https://tineye.com" target="_blank" class="btn btn-primary">检测图片</a>
-                        </div>
-                        
-                        <div class="tool-card">
-                            <div class="tool-name">🛡️ 免责声明生成器</div>
-                            <div class="tool-description">创建合规的健康内容免责声明</div>
-                            <button class="btn btn-outline">生成免责声明</button>
+                            <a href="https://canva.cn" target="_blank" class="btn">开始设计</a>
                         </div>
                     </div>
                 </div>
@@ -478,7 +418,7 @@
             
             <section id="publishing" class="step-card">
                 <div class="step-header">
-                    <div class="step-number">5</div>
+                    <div class="step-number">4</div>
                     <h2 class="step-title">发布准备</h2>
                 </div>
                 <div class="step-content">
@@ -488,19 +428,19 @@
                         <div class="tool-card">
                             <div class="tool-name">📱 公众号编辑器</div>
                             <div class="tool-description">135编辑器优化公众号图文</div>
-                            <a href="https://www.135editor.com" target="_blank" class="btn btn-primary">访问135编辑器</a>
+                            <a href="https://www.135editor.com" target="_blank" class="btn">访问135编辑器</a>
                         </div>
                         
                         <div class="tool-card">
                             <div class="tool-name">📸 醒图图片编辑</div>
                             <div class="tool-description">优化小红书平台图片内容</div>
-                            <a href="https://xingtu.cn" target="_blank" class="btn btn-primary">使用醒图</a>
+                            <a href="https://xingtu.cn" target="_blank" class="btn">使用醒图</a>
                         </div>
                         
                         <div class="tool-card">
                             <div class="tool-name">📝 知乎编辑器</div>
                             <div class="tool-description">知乎内容格式优化工具</div>
-                            <a href="https://zhuanlan.zhihu.com" target="_blank" class="btn btn-primary">访问知乎</a>
+                            <a href="https://zhuanlan.zhihu.com" target="_blank" class="btn">访问知乎</a>
                         </div>
                     </div>
                 </div>
@@ -526,25 +466,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 免责声明生成器
-            document.querySelector('.btn-outline').addEventListener('click', function() {
-                const statements = [
-                    "本内容仅为科普信息分享，不可替代专业医疗建议",
-                    "如有健康疑问，请及时咨询执业医师或医疗机构",
-                    "身体感受存在个体差异，具体情况请遵医嘱",
-                    "本文内自我诊断信息仅供娱乐参考，不具备临床诊断价值"
-                ];
-                
-                let output = "推荐免责声明组合：\n\n";
-                for (let i = 0; i < 2; i++) {
-                    const randomIndex = Math.floor(Math.random() * statements.length);
-                    output += `• ${statements[randomIndex]}\n`;
-                    statements.splice(randomIndex, 1);
-                }
-                
-                alert(output);
-            });
-            
             // 平滑滚动到锚点
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
