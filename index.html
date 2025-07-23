@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康科普AI工坊 - 精简版</title>
+    <style>
+        /* 精简后的样式代码，移除资源管理相关样式 */
+        :root {
+            --primary: #4CAF50;
+            --secondary: #2196F3;
+            --accent: #FF9800;
+            --light: #f8f9fa;
+            --dark: #333;
+            --gray: #6c757d;
+            --danger: #e53935;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            transition: background 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .workflow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 40px 0;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .step-content {
+            margin-left: 55px;
+        }
+        
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .tool-card {
+            background: var(--light);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tool-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tool-description {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            width: fit-content;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0d8aee;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+        
+        .tips-section {
+            background: #fff8e1;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .tips-header {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .tip {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .tip::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .workflow-graphic {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .workflow-steps {
+            display: flex;
+            position: relative;
+        }
+        
+        .workflow-step {
+            width: 100px;
+            height: 100px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin: 0 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+        }
+        
+        .workflow-step::after {
+            content: "→";
+            position: absolute;
+            right: -20px;
+            top: 40%;
+            font-size: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .workflow-step:last-child::after {
+            display: none;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .tool-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .workflow-steps {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .workflow-step {
+                margin: 10px;
+            }
+            
+            .workflow-step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">⚕️</span>
+                <span>健康科普AI工坊</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#theme">主题生成</a>
+                <a href="#creation">文案创作</a>
+                <a href="#design">视觉设计</a>
+                <a href="#compliance">合规检查</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="workflow-graphic">
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-icon">💡</div>
+                    <div>主题生成</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-icon">📝</div>
+                    <div>文案创作</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-icon">🎨</div>
+                    <div>视觉设计</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-icon">🔍</div>
+                    <div>合规检查</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-icon">🚀</div>
+                    <div>发布准备</div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="workflow-container">
+            <section id="theme" class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h2 class="step-title">主题生成</h2>
+                </div>
+                <div class="step-content">
+                    <p>获取健康科普创作灵感，发现热点话题和流行趋势</p>
+                    
+                    <div class="tool-list">
+                        <div class="tool-card">
+                            <div class="tool-name">📊 知乎热榜</div>
+                            <div class="tool-description">查看当前最热门的健康话题讨论</div>
+                            <a href="https://www.zhihu.com/hot" target="_blank" class="btn btn-primary">访问知乎热榜</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">🔥 标题生成器</div>
+                            <div class="tool-description">创建引人注目的标题和主题创意</div>
+                            <a href="https://www.logosc.cn/ai-title/" target="_blank" class="btn btn-primary">使用生成器</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">🧠 主题灵感库</div>
+                            <div class="tool-description">健康科普主题分类与创意建议</div>
+                            <button class="btn btn-outline">查看灵感库</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="creation" class="step-card">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h2 class="step-title">文案创作</h2>
+                </div>
+                <div class="step-content">
+                    <p>撰写专业、通俗易懂的健康科普内容</p>
+                    
+                    <div class="tool-list">
+                        <div class="tool-card">
+                            <div class="tool-name">🧾 DeepSeek AI助手</div>
+                            <div class="tool-description">撰写科普文案并生成分镜脚本</div>
+                            <a href="https://www.deepseek.com" target="_blank" class="btn btn-primary">开始AI写作</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">📊 ChatGPT对话</div>
+                            <div class="tool-description">获取健康内容创作灵感</div>
+                            <a href="https://chat.openai.com" target="_blank" class="btn btn-primary">访问ChatGPT</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">📋 脚本转换器</div>
+                            <div class="tool-description">将文章转换为视觉分镜脚本</div>
+                            <a href="https://chatppt.ai" target="_blank" class="btn btn-primary">使用工具</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="design" class="step-card">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h2 class="step-title">视觉设计</h2>
+                </div>
+                <div class="step-content">
+                    <p>创建专业、吸引人的健康科普视觉内容</p>
+                    
+                    <div class="tool-list">
+                        <div class="tool-card">
+                            <div class="tool-name">🖼️ Midjourney绘图</div>
+                            <div class="tool-description">生成卡通插图和角色设计</div>
+                            <a href="https://www.midjourney.com" target="_blank" class="btn btn-primary">开始创作</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">🎨 Leonardo AI</div>
+                            <div class="tool-description">创建场景插画和背景元素</div>
+                            <a href="https://leonardo.ai" target="_blank" class="btn btn-primary">访问平台</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">🔗 Vecteezy素材</div>
+                            <div class="tool-description">下载免费医疗矢量素材</div>
+                            <a href="https://www.vecteezy.com/medical" target="_blank" class="btn btn-primary">获取素材</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">🖋️ Canva设计平台</div>
+                            <div class="tool-description">完整图文设计与排版工具</div>
+                            <a href="https://canva.cn" target="_blank" class="btn btn-primary">开始设计</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="compliance" class="step-card">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h2 class="step-title">合规检查</h2>
+                </div>
+                <div class="step-content">
+                    <p>确保内容符合医疗健康相关规范和政策</p>
+                    
+                    <div class="tool-list">
+                        <div class="tool-card">
+                            <div class="tool-name">⚖️ 腾讯医典审核</div>
+                            <div class="tool-description">医疗内容合规性检查和风险标记</div>
+                            <a href="https://med.ai.tencent.com/" target="_blank" class="btn btn-primary">进行审核</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">🔎 TinEye版权检测</div>
+                            <div class="tool-description">验证图片版权并避免侵权风险</div>
+                            <a href="https://tineye.com" target="_blank" class="btn btn-primary">检测图片</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">🛡️ 免责声明生成器</div>
+                            <div class="tool-description">创建合规的健康内容免责声明</div>
+                            <button class="btn btn-outline">生成免责声明</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="publishing" class="step-card">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <h2 class="step-title">发布准备</h2>
+                </div>
+                <div class="step-content">
+                    <p>优化内容并准备发布到各大平台</p>
+                    
+                    <div class="tool-list">
+                        <div class="tool-card">
+                            <div class="tool-name">📱 公众号编辑器</div>
+                            <div class="tool-description">135编辑器优化公众号图文</div>
+                            <a href="https://www.135editor.com" target="_blank" class="btn btn-primary">访问135编辑器</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">📸 醒图图片编辑</div>
+                            <div class="tool-description">优化小红书平台图片内容</div>
+                            <a href="https://xingtu.cn" target="_blank" class="btn btn-primary">使用醒图</a>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-name">📝 知乎编辑器</div>
+                            <div class="tool-description">知乎内容格式优化工具</div>
+                            <a href="https://zhuanlan.zhihu.com" target="_blank" class="btn btn-primary">访问知乎</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <section class="tips-section">
+            <div class="tips-header">💡 创作者提示 & 注意事项</div>
+            <div class="tip">所有医疗内容必须添加免责声明："本文仅为信息分享，不可替代专业医疗建议"</div>
+            <div class="tip">使用AI生成的角色需要保持一致性 - 保存常用提示词和参数设置</div>
+            <div class="tip">对于诊断类内容必须标注"本测试仅供娱乐，具体状况请咨询执业医师"</div>
+            <div class="tip">避免使用"治愈"、"治疗"等绝对化表述，替换为"支持"、"改善"等更合适的词汇</div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container footer-content">
+            <h3>健康科普AI工坊</h3>
+            <p>为个人创作者打造的健康科普内容一站式工作流程</p>
+            <p>© 2025 健康科普AI工坊 - 提供简单高效的创作体验</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 免责声明生成器
+            document.querySelector('.btn-outline').addEventListener('click', function() {
+                const statements = [
+                    "本内容仅为科普信息分享，不可替代专业医疗建议",
+                    "如有健康疑问，请及时咨询执业医师或医疗机构",
+                    "身体感受存在个体差异，具体情况请遵医嘱",
+                    "本文内自我诊断信息仅供娱乐参考，不具备临床诊断价值"
+                ];
+                
+                let output = "推荐免责声明组合：\n\n";
+                for (let i = 0; i < 2; i++) {
+                    const randomIndex = Math.floor(Math.random() * statements.length);
+                    output += `• ${statements[randomIndex]}\n`;
+                    statements.splice(randomIndex, 1);
+                }
+                
+                alert(output);
+            });
+            
+            // 平滑滚动到锚点
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
